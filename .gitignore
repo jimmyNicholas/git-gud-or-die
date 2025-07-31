@@ -1,3 +1,51 @@
-PROJECT_OVERVIEW.md
-TASK.md
+# Project documentation (keep in repo for now)
+# PROJECT_OVERVIEW.md
+# TASK.md
+
+# macOS
 .DS_Store
+
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Expo
+.expo/
+*/expo-env.d.ts
+dist/
+web-build/
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# Debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
