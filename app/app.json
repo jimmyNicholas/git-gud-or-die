@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Git Gud or Die",
+    "slug": "git-gud-or-die",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gitgudordie.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.gitgudordie.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "description": "A gamified todo app where missing deadlines kills your character and all current tasks are permanently deleted. Think Dark Souls meets productivity with no hand-holding, no second chances, just pure accountability.",
+    "primaryColor": "#ff0000",
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d1e907f8-3efb-40fc-814d-91f7f7404f9f"
+      }
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
