@@ -42,10 +42,14 @@ yarn-error.*
 .env.production.local
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo
+
+# VS Code (allow workspace settings)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 
 # Logs
 *.log

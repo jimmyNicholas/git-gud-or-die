@@ -1,0 +1,39 @@
+{
+  "recommendations": [
+    // React Native Development
+    "ms-vscode.vscode-react-native",
+    "msjsdiag.vscode-react-native",
+    
+    // TypeScript Support
+    "ms-vscode.vscode-typescript-next",
+    
+    // React/JSX Support
+    "ms-vscode.vscode-typescript-react-snippets",
+    "burkeholland.simple-react-snippets",
+    
+    // Code Quality
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    
+    // Git Integration
+    "eamodio.gitlens",
+    
+    // Auto Rename Tags
+    "formulahendry.auto-rename-tag",
+    
+    // Bracket Pair Colorizer
+    "coenraads.bracket-pair-colorizer-2",
+    
+    // Path Intellisense
+    "christian-kohler.path-intellisense",
+    
+    // Import Cost
+    "wix.vscode-import-cost",
+    
+    // Error Lens
+    "usernamehw.errorlens",
+    
+    // Material Icon Theme (optional)
+    "pkief.material-icon-theme"
+  ]
+} 
