@@ -20,8 +20,4 @@ const styles = StyleSheet.create({
   title: {
     ...theme.styles.text.title,
   },
-  subtitle: {
-    ...theme.styles.text.subtitle,
-    marginTop: theme.spacing.sm,
-  },
 });

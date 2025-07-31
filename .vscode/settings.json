@@ -8,22 +8,22 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-  
+
   // TypeScript Settings
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.suggest.autoImports": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  
+
   // React Native Settings
   "react-native-tools.showUserTips": false,
   "react-native-tools.projectRoot": "./app",
-  
+
   // File Associations
   "files.associations": {
     "*.tsx": "typescriptreact",
     "*.ts": "typescript"
   },
-  
+
   // Search Settings
   "search.exclude": {
     "**/node_modules": true,
@@ -31,7 +31,7 @@
     "**/.expo": true,
     "**/build": true
   },
-  
+
   // Explorer Settings
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
@@ -41,4 +41,4 @@
     "*.jsx": "${capture}.jsx.map, ${capture}.min.jsx, ${capture}.d.ts",
     "*.d.ts": "${capture}.js, ${capture}.jsx, ${capture}.ts, ${capture}.tsx"
   }
-} 
+}
