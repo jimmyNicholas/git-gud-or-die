@@ -1,7 +1,7 @@
 import { Stack, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { theme } from './theme';
+import { theme } from '../theme';
 
 export default function RootLayout() {
   const router = useRouter();
