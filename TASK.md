@@ -8,24 +8,24 @@ Implement basic navigation structure and core screens for the "Git Gud or Die" t
 
 ### 1. Set Up Expo Router Structure
 
-- [ ] Create `app/_layout.tsx` for root layout
-- [ ] Create `app/index.tsx` for home screen
-- [ ] Configure navigation theme and styling
-- [ ] Test basic navigation flow
+- [x] Create `app/_layout.tsx` for root layout
+- [x] Create `app/index.tsx` for home screen
+- [x] Configure navigation theme and styling
+- [x] Test basic navigation flow
 
 ### 2. Create Core Screens
 
-- [ ] Create `app/todos.tsx` for todo list screen
-- [ ] Create `app/character.tsx` for character status screen
-- [ ] Create `app/settings.tsx` for app settings screen
-- [ ] Add basic screen layouts with theme styling
+- [x] Create `app/todos.tsx` for quest list screen
+- [x] Create `app/character.tsx` for character status screen
+- [x] Create `app/settings.tsx` for app settings screen
+- [x] Add basic screen layouts with theme styling
 
 ### 3. Implement Navigation Components
 
-- [ ] Create bottom tab navigator
-- [ ] Add navigation headers with Dark Souls styling
-- [ ] Implement screen transitions and animations
-- [ ] Test navigation between all screens
+- [x] Create header-based navigation
+- [x] Add navigation headers with Dark Souls styling
+- [x] Implement screen transitions and animations
+- [x] Test navigation between all screens
 
 ### 4. Add Basic UI Components
 
