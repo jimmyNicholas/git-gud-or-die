@@ -64,6 +64,36 @@ A gamified todo app where missing deadlines kills your character and all current
 - Regular commits with descriptive messages
 - Documentation-driven development
 
+## Architecture Guidelines
+
+### State Management Preferences
+
+- **Keep it Simple**: No complex contexts for small apps
+- **Services + Hooks Pattern**: Use service classes with custom hooks
+- **Inline Types**: Only extract types when used across multiple files
+- **AWS-Ready Design**: Structure services to be easily replaceable with AWS later
+
+### Code Organization
+
+- **Minimal Abstraction**: Avoid over-engineering for small projects
+- **Clear Separation**: Services handle business logic, hooks handle state
+- **Pragmatic Structure**: Focus on functionality over perfect architecture
+- **Easy Testing**: Design for simple mocking and testing
+
+### Technology Choices
+
+- **AsyncStorage**: For local persistence (simple, reliable)
+- **Custom Hooks**: For state management (no context overhead)
+- **Service Layer**: For business logic (testable, replaceable)
+- **Inline Types**: Unless shared across multiple files
+
+### Future-Proofing
+
+- **Service Interfaces**: Design services to be swappable
+- **Local First**: Start with local implementation, add AWS later
+- **Incremental Migration**: Can replace services one at a time
+- **No Lock-in**: Avoid framework-specific patterns that are hard to change
+
 ## Technology Stack
 
 ### Frontend
@@ -72,6 +102,8 @@ A gamified todo app where missing deadlines kills your character and all current
 - **TypeScript** for type safety
 - **Expo Router** for navigation
 - **Expo Notifications** for push notifications
+- **AsyncStorage** for local persistence
+- **Custom hooks + services** for state management (no contexts)
 
 ### Backend
 
@@ -86,6 +118,7 @@ A gamified todo app where missing deadlines kills your character and all current
 - **AWS CDK** or **Serverless Framework** for infrastructure
 - **GitHub Actions** for CI/CD
 - **AWS Budgets** for cost monitoring
+- **AsyncStorage** for local data persistence
 
 ### Deployment
 
@@ -121,7 +154,7 @@ A gamified todo app where missing deadlines kills your character and all current
 ### Phase 1: React Native MVP
 
 - [x] Initialize Expo project with TypeScript
-- [ ] Set up basic navigation and screens
+- [x] Set up basic navigation and screens
 - [ ] Implement core todo CRUD with local state
 - [ ] Add countdown timers and permadeath logic
 - [ ] Basic character system (create/reset character)

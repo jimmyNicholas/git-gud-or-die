@@ -1,60 +1,65 @@
-# Current Task: Set up basic navigation and screens
+# Current Task: Implement core todo CRUD with local state
 
 ## Task Overview
 
-Implement basic navigation structure and core screens for the "Git Gud or Die" todo app using Expo Router.
+Implement the core todo management functionality with local state management, including creating, reading, updating, and deleting todos with mandatory deadlines.
 
 ## Subtasks
 
-### 1. Set Up Expo Router Structure
+### 1. Set Up Local State Management
 
-- [x] Create `app/_layout.tsx` for root layout
-- [x] Create `app/index.tsx` for home screen
-- [x] Configure navigation theme and styling
-- [x] Test basic navigation flow
+- [ ] Install AsyncStorage dependency
+- [ ] Create todo data structure with deadline requirements
+- [ ] Create todoService with AsyncStorage implementation
+- [ ] Create useTodos hook for state management
+- [ ] Create characterService and useCharacter hook
+- [ ] Add date/time utilities for deadline handling
 
-### 2. Create Core Screens
+### 2. Implement Todo CRUD Operations
 
-- [x] Create `app/todos.tsx` for quest list screen
-- [x] Create `app/character.tsx` for character status screen
-- [x] Create `app/settings.tsx` for app settings screen
-- [x] Add basic screen layouts with theme styling
+- [ ] Create "Add Todo" functionality with deadline picker
+- [ ] Implement todo list display with countdown timers
+- [ ] Add todo editing capabilities
+- [ ] Implement todo deletion with confirmation
 
-### 3. Implement Navigation Components
+### 3. Add Countdown Timer Logic
 
-- [x] Create header-based navigation
-- [x] Add navigation headers with Dark Souls styling
-- [x] Implement screen transitions and animations
-- [x] Test navigation between all screens
+- [ ] Create countdown timer component
+- [ ] Implement real-time countdown updates
+- [ ] Add visual warnings as deadlines approach
+- [ ] Handle deadline expiration logic
 
-### 4. Add Basic UI Components
+### 4. Implement Permadeath System
 
-- [ ] Create reusable Button component
-- [ ] Create reusable Card component
-- [ ] Create reusable Text components
-- [ ] Implement consistent styling with theme
+- [ ] Create character death detection logic
+- [ ] Implement todo deletion on character death
+- [ ] Add character resurrection/creation flow
+- [ ] Set up death statistics tracking
 
-### 5. Test Navigation Setup
+### 5. Create UI Components
 
-- [ ] Verify all screens render correctly
-- [ ] Test navigation flow and transitions
-- [ ] Ensure theme styling is consistent
-- [ ] Test on Android device/simulator
+- [ ] Design todo item component with countdown
+- [ ] Create add/edit todo modal/form
+- [ ] Implement character status display
+- [ ] Add confirmation dialogs for destructive actions
 
 ## Success Criteria
 
-- [ ] Navigation structure is properly set up with Expo Router
-- [ ] All core screens render correctly with theme styling
-- [ ] Navigation flow works smoothly between screens
-- [ ] UI components are reusable and consistent
-- [ ] App maintains Dark Souls aesthetic throughout
+- [ ] Users can create todos with mandatory deadlines
+- [ ] Countdown timers show accurate time remaining
+- [ ] Character dies and todos are deleted when deadlines are missed
+- [ ] Users can resurrect/create new characters
+- [ ] All todo operations work smoothly with local state
 
-## Estimated Time: 2-3 hours
+## Estimated Time: 4-6 hours
 
 ## Notes
 
-- Use Expo Router for file-based navigation
-- Maintain Dark Souls theme throughout all screens
-- Keep UI components simple but atmospheric
-- Focus on Android-first development
-- Use theme.ts for consistent styling
+- Use AsyncStorage for local persistence
+- Implement countdown timers with useEffect and setInterval
+- Keep permadeath logic simple but effective
+- Focus on Android-first testing
+- Maintain Dark Souls aesthetic in all components
+- Use services + hooks pattern (no contexts for simplicity)
+- Keep types inline unless used across multiple files
+- Design services to be easily replaceable with AWS later
