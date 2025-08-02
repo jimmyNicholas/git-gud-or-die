@@ -1,66 +1,60 @@
-# Current Task: Initialize Expo project with TypeScript
+# Current Task: Set up basic navigation and screens
 
 ## Task Overview
 
-Set up the foundation for the React Native app using Expo with TypeScript configuration.
+Implement basic navigation structure and core screens for the "Git Gud or Die" todo app using Expo Router.
 
 ## Subtasks
 
-### 1. Install Expo CLI and Create Project
+### 1. Set Up Expo Router Structure
 
-- [x] Install Expo CLI globally: `npm install -g @expo/cli`
-- [x] Create new Expo project with TypeScript template in current directory: `npx create-expo-app@latest . --template blank-typescript`
-- [x] Verify project structure and TypeScript configuration
+- [x] Create `app/_layout.tsx` for root layout
+- [x] Create `app/index.tsx` for home screen
+- [x] Configure navigation theme and styling
+- [x] Test basic navigation flow
 
-### 2. Configure Project Settings
+### 2. Create Core Screens
 
-- [x] Update `app.json` with app metadata (name, slug, version)
-- [x] Configure Android-specific settings in `app.json`
-- [x] Set up development build configuration
-- [x] Verify TypeScript configuration in `tsconfig.json`
+- [x] Create `app/todos.tsx` for quest list screen
+- [x] Create `app/character.tsx` for character status screen
+- [x] Create `app/settings.tsx` for app settings screen
+- [x] Add basic screen layouts with theme styling
 
-### 3. Install Essential Dependencies
+### 3. Implement Navigation Components
 
-- [x] Install Expo Router: `npx expo install expo-router`
-- [x] Install navigation dependencies: `npx expo install expo-linking expo-constants expo-status-bar`
-- [x] Install UI/UX libraries: `npx expo install expo-linear-gradient expo-haptics`
-- [x] Install date/time handling: `npx expo install expo-device expo-application`
-- [x] Install Nativewind and setup basic global theme (created theme.ts with Dark Souls color palette)
+- [x] Create header-based navigation
+- [x] Add navigation headers with Dark Souls styling
+- [x] Implement screen transitions and animations
+- [x] Test navigation between all screens
 
-### 4. Set Up Project Structure
+### 4. Add Basic UI Components
 
-- [x] Create `app/` directory for Expo Router
-- [x] Create `components/` directory for reusable components
-- [x] Create `types/` directory for TypeScript interfaces (skipped for small project)
-- [x] Create `utils/` directory for helper functions
-- [x] Create `constants/` directory for app constants
+- [ ] Create reusable Button component
+- [ ] Create reusable Card component
+- [ ] Create reusable Text components
+- [ ] Implement consistent styling with theme
 
-### 5. Configure Development Environment
+### 5. Test Navigation Setup
 
-- [x] Set up VS Code with React Native extensions
-- [x] Configure ESLint and Prettier for code formatting
-- [x] Create `.gitignore` for Expo/React Native
-- [x] Set up Git repository and initial commit
-
-### 6. Test Basic Setup
-
-- [x] Run `npx expo start` to verify development server
-- [x] Test on Android simulator/emulator
-- [x] Test on physical Android device via Expo Go
-- [x] Verify TypeScript compilation and error checking
+- [ ] Verify all screens render correctly
+- [ ] Test navigation flow and transitions
+- [ ] Ensure theme styling is consistent
+- [ ] Test on Android device/simulator
 
 ## Success Criteria
 
-- [x] Expo project runs without errors
-- [x] TypeScript compilation works correctly
-- [x] App launches on Android simulator/device
-- [x] Project structure is organized and scalable
-- [x] Development environment is properly configured
+- [ ] Navigation structure is properly set up with Expo Router
+- [ ] All core screens render correctly with theme styling
+- [ ] Navigation flow works smoothly between screens
+- [ ] UI components are reusable and consistent
+- [ ] App maintains Dark Souls aesthetic throughout
 
 ## Estimated Time: 2-3 hours
 
 ## Notes
 
-- Focus on Android-first development as specified in roadmap
-- Keep dependencies minimal for MVP - add more as needed
-- Ensure TypeScript strict mode is enabled for better code quality
+- Use Expo Router for file-based navigation
+- Maintain Dark Souls theme throughout all screens
+- Keep UI components simple but atmospheric
+- Focus on Android-first development
+- Use theme.ts for consistent styling
