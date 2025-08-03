@@ -8,10 +8,10 @@ Implement the core todo management functionality with local state management, in
 
 ### 1. Set Up Local State Management
 
-- [ ] Install AsyncStorage dependency
-- [ ] Create todo data structure with deadline requirements
-- [ ] Create todoService with AsyncStorage implementation
-- [ ] Create useTodos hook for state management
+- [x] Install AsyncStorage dependency
+- [x] Create quest data structure with deadline requirements
+- [x] Create questService with AsyncStorage implementation
+- [x] Create useQuests hook for state management
 - [ ] Create characterService and useCharacter hook
 - [ ] Add date/time utilities for deadline handling
 
@@ -63,3 +63,5 @@ Implement the core todo management functionality with local state management, in
 - Use services + hooks pattern (no contexts for simplicity)
 - Keep types inline unless used across multiple files
 - Design services to be easily replaceable with AWS later
+- Fixed AsyncStorage version compatibility (2.1.2)
+- Resolved ESLint issues in todo service and storage utilities
