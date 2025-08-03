@@ -5,3 +5,10 @@ export {
   type CreateQuestInput,
   type QuestService,
 } from './questService';
+
+export {
+  LocalCharacterService,
+  type Character,
+  type CreateCharacterInput,
+  type CharacterService,
+} from './characterService';

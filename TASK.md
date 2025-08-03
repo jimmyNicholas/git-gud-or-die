@@ -12,7 +12,7 @@ Implement the core todo management functionality with local state management, in
 - [x] Create quest data structure with deadline requirements
 - [x] Create questService with AsyncStorage implementation
 - [x] Create useQuests hook for state management
-- [ ] Create characterService and useCharacter hook
+- [x] Create characterService and useCharacter hook
 - [ ] Add date/time utilities for deadline handling
 
 ### 2. Implement Todo CRUD Operations
