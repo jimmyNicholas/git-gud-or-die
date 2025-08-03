@@ -65,3 +65,4 @@ Implement the core todo management functionality with local state management, in
 - Design services to be easily replaceable with AWS later
 - Fixed AsyncStorage version compatibility (2.1.2)
 - Resolved ESLint issues in todo service and storage utilities
+- Added avatar system for future pixel art character customization

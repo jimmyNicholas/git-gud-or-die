@@ -95,6 +95,32 @@ export const useCharacter = () => {
     }
   }, [characterService]);
 
+  const updateAvatar = useCallback(
+    async (avatarUpdates: Partial<Character['avatar']>) => {
+      try {
+        const updatedCharacter = await characterService.updateAvatar(avatarUpdates);
+        setCharacter(updatedCharacter);
+        return updatedCharacter;
+      } catch (err) {
+        setError('Failed to update avatar');
+        throw err;
+      }
+    },
+    [characterService]
+  );
+
+  const generateRandomAvatar = useCallback(async () => {
+    try {
+      const randomAvatar = characterService.generateRandomAvatar();
+      const updatedCharacter = await characterService.updateAvatar(randomAvatar);
+      setCharacter(updatedCharacter);
+      return updatedCharacter;
+    } catch (err) {
+      setError('Failed to generate random avatar');
+      throw err;
+    }
+  }, [characterService]);
+
   // Computed values
   const isAlive = useMemo(() => character?.isAlive ?? false, [character]);
   const isDead = useMemo(() => !isAlive, [isAlive]);
@@ -136,6 +162,8 @@ export const useCharacter = () => {
     killCharacter,
     resurrectCharacter,
     incrementQuestsCompleted,
+    updateAvatar,
+    generateRandomAvatar,
     loadCharacter,
 
     // Computed
