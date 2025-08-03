@@ -1,60 +1,84 @@
-# Current Task: Set up basic navigation and screens
+# Current Task: Implement core todo CRUD with local state
 
 ## Task Overview
 
-Implement basic navigation structure and core screens for the "Git Gud or Die" todo app using Expo Router.
+Implement the core todo management functionality with local state management, including creating, reading, updating, and deleting todos with mandatory deadlines.
 
 ## Subtasks
 
-### 1. Set Up Expo Router Structure
+### 1. Set Up Local State Management
 
-- [x] Create `app/_layout.tsx` for root layout
-- [x] Create `app/index.tsx` for home screen
-- [x] Configure navigation theme and styling
-- [x] Test basic navigation flow
+- [x] Install AsyncStorage dependency
+- [x] Create quest data structure with deadline requirements
+- [x] Create questService with AsyncStorage implementation
+- [x] Create useQuests hook for state management
+- [x] Create characterService and useCharacter hook
+- [x] Add date/time utilities for deadline handling
 
-### 2. Create Core Screens
+### 2. Create UI Components
 
-- [x] Create `app/todos.tsx` for quest list screen
-- [x] Create `app/character.tsx` for character status screen
-- [x] Create `app/settings.tsx` for app settings screen
-- [x] Add basic screen layouts with theme styling
+- [x] Design quest card component with countdown display
+- [x] Create add/edit quest modal/form
+- [x] Implement quest list with proper styling
+- [x] Add confirmation dialogs for destructive actions
+- [x] Add confirmation dialogs for quest creation actions (reminding users of the consequences of failure and ensuring details are correct)
+- [x] Design character status display component
 
-### 3. Implement Navigation Components
+### 3. Implement Quest CRUD Operations
 
-- [x] Create header-based navigation
-- [x] Add navigation headers with Dark Souls styling
-- [x] Implement screen transitions and animations
-- [x] Test navigation between all screens
+- [ ] Create "Add Quest" functionality with deadline picker
+- [ ] Implement quest list display with countdown timers
+- [ ] Add quest editing capabilities
+- [ ] Implement quest deletion with confirmation
 
-### 4. Add Basic UI Components
+### 4. Add Countdown Timer Logic
 
-- [ ] Create reusable Button component
-- [ ] Create reusable Card component
-- [ ] Create reusable Text components
-- [ ] Implement consistent styling with theme
+- [ ] Create countdown timer component
+- [ ] Implement real-time countdown updates
+- [ ] Add visual warnings as deadlines approach
+- [ ] Handle deadline expiration logic
 
-### 5. Test Navigation Setup
+### 5. Implement Permadeath System
 
-- [ ] Verify all screens render correctly
-- [ ] Test navigation flow and transitions
-- [ ] Ensure theme styling is consistent
-- [ ] Test on Android device/simulator
+- [ ] Create character death detection logic
+- [ ] Implement quest deletion on character death
+- [ ] Add character resurrection/creation flow
+- [ ] Set up death statistics tracking
 
 ## Success Criteria
 
-- [ ] Navigation structure is properly set up with Expo Router
-- [ ] All core screens render correctly with theme styling
-- [ ] Navigation flow works smoothly between screens
-- [ ] UI components are reusable and consistent
-- [ ] App maintains Dark Souls aesthetic throughout
+- [ ] Users can create todos with mandatory deadlines
+- [ ] Countdown timers show accurate time remaining
+- [ ] Character dies and todos are deleted when deadlines are missed
+- [ ] Users can resurrect/create new characters
+- [ ] All todo operations work smoothly with local state
 
-## Estimated Time: 2-3 hours
+## Estimated Time: 4-6 hours
 
 ## Notes
 
-- Use Expo Router for file-based navigation
-- Maintain Dark Souls theme throughout all screens
-- Keep UI components simple but atmospheric
-- Focus on Android-first development
-- Use theme.ts for consistent styling
+- Use AsyncStorage for local persistence
+- Implement countdown timers with useEffect and setInterval
+- Keep permadeath logic simple but effective
+- Focus on Android-first testing
+- Maintain Dark Souls aesthetic in all components
+- Use services + hooks pattern (no contexts for simplicity)
+- Keep types inline unless used across multiple files
+- Design services to be easily replaceable with AWS later
+- Fixed AsyncStorage version compatibility (2.1.2)
+- Resolved ESLint issues in todo service and storage utilities
+- Added avatar system for future pixel art character customization
+- Added comprehensive date/time utilities for deadline handling
+- Created reusable QuestCard component with proper TypeScript types
+- Implemented color-coded health bar system (Green → Yellow → Orange → Red)
+- Consolidated types into centralized types folder for better maintainability
+- Added fine-tune deadline controls (+/- 5m, 15m) to QuestModal
+- Implemented inline editing for quest cards with expandable content
+- Replaced manual deadline input with proper date-time picker
+- Added comprehensive quick adjustment buttons (5m, 1h, 1d, 1w)
+- Implemented card collapse behavior (auto-collapse after edit, only one card expanded at a time)
+- Created reusable ConfirmationDialog component for destructive actions
+- Created CharacterStatus component with permadeath warnings and character stats
+- Added delete functionality to QuestCard with confirmation dialog support
+- Added confirmation dialogs for quest creation/editing with permadeath warnings
+- Enhanced deadline display in confirmations with relative time (e.g., "2d 5h 30m from now")
