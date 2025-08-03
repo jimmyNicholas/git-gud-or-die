@@ -18,8 +18,8 @@ Implement the core todo management functionality with local state management, in
 ### 2. Create UI Components
 
 - [x] Design quest card component with countdown display
-- [ ] Create add/edit quest modal/form
-- [ ] Implement quest list with proper styling
+- [x] Create add/edit quest modal/form
+- [x] Implement quest list with proper styling
 - [ ] Add confirmation dialogs for destructive actions
 - [ ] Design character status display component
 
@@ -71,3 +71,8 @@ Implement the core todo management functionality with local state management, in
 - Created reusable QuestCard component with proper TypeScript types
 - Implemented color-coded health bar system (Green → Yellow → Orange → Red)
 - Consolidated types into centralized types folder for better maintainability
+- Added fine-tune deadline controls (+/- 5m, 15m) to QuestModal
+- Implemented inline editing for quest cards with expandable content
+- Replaced manual deadline input with proper date-time picker
+- Added comprehensive quick adjustment buttons (5m, 1h, 1d, 1w)
+- Implemented card collapse behavior (auto-collapse after edit, only one card expanded at a time)

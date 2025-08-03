@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -8,10 +8,16 @@ import {
   Alert,
 } from 'react-native';
 import { theme } from '../theme';
-import { QuestCard } from '../components';
-import { type Quest } from '../types';
+import { QuestCard, QuestModal } from '../components';
+import { type Quest, type CreateQuestInput } from '../types';
 
 export default function TodosScreen() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [editingQuest, setEditingQuest] = useState<Quest | undefined>(
+    undefined
+  );
+  const [expandedQuestId, setExpandedQuestId] = useState<string | null>(null);
+
   // Sample quest data for testing
   const sampleQuests: Quest[] = [
     {
@@ -51,18 +57,47 @@ export default function TodosScreen() {
     },
   ];
 
-  const handleQuestPress = (quest: Quest) => {
-    Alert.alert(
-      'Quest Details',
-      `Title: ${quest.title}\nDeadline: ${quest.deadline}`
-    );
+  const handleNewQuest = () => {
+    setEditingQuest(undefined);
+    setModalVisible(true);
+  };
+
+  const handleSaveQuest = (_questData: CreateQuestInput) => {
+    if (editingQuest) {
+      // TODO: Update existing quest
+      Alert.alert('Success', 'Quest updated! (Not implemented yet)');
+    } else {
+      // TODO: Create new quest
+      Alert.alert('Success', 'Quest created! (Not implemented yet)');
+    }
+  };
+
+  const handleUpdateQuest = (
+    _questId: string,
+    _updates: { title?: string; description?: string }
+  ) => {
+    Alert.alert('Success', 'Quest updated! (Not implemented yet)');
+    setExpandedQuestId(null); // Collapse card after update
+  };
+
+  const handleQuestCancel = () => {
+    setExpandedQuestId(null); // Collapse card after cancel
+  };
+
+  const handleQuestExpand = (questId: string) => {
+    setExpandedQuestId(expandedQuestId === questId ? null : questId);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+    setEditingQuest(undefined);
   };
 
   return (
     <View style={styles.container}>
       {/* Top Section - New Task Button and Controls */}
       <View style={styles.topSection}>
-        <TouchableOpacity style={styles.newTaskButton} onPress={() => {}}>
+        <TouchableOpacity style={styles.newTaskButton} onPress={handleNewQuest}>
           <Text style={styles.newTaskButtonText}>+ New Quest</Text>
         </TouchableOpacity>
         <View style={styles.controlsSection}>
@@ -82,11 +117,22 @@ export default function TodosScreen() {
             <QuestCard
               key={quest.id}
               quest={quest}
-              onPress={handleQuestPress}
+              onUpdate={handleUpdateQuest}
+              onExpand={handleQuestExpand}
+              onCancel={handleQuestCancel}
+              isExpanded={expandedQuestId === quest.id}
             />
           ))}
         </ScrollView>
       </View>
+
+      {/* Quest Modal */}
+      <QuestModal
+        visible={modalVisible}
+        onClose={handleCloseModal}
+        onSave={handleSaveQuest}
+        quest={editingQuest}
+      />
     </View>
   );
 }
