@@ -1,9 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import {
-  LocalQuestService,
-  type Quest,
-  type CreateQuestInput,
-} from '../services';
+import { LocalQuestService } from '../services';
+import { type Quest, type CreateQuestInput } from '../types';
 
 export const useQuests = () => {
   // State

@@ -5,10 +5,59 @@ import {
   ScrollView,
   TouchableOpacity,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import { theme } from '../theme';
+import { QuestCard } from '../components';
+import { type Quest } from '../types';
 
 export default function TodosScreen() {
+  // Sample quest data for testing
+  const sampleQuests: Quest[] = [
+    {
+      id: '1',
+      title: 'Complete project proposal',
+      deadline: new Date(Date.now() + 17 * 60 * 60 * 1000).toISOString(), // 17 hours from now
+      completed: false,
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: '2',
+      title: 'Review code changes',
+      deadline: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 1 day from now
+      completed: false,
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: '3',
+      title: 'Update documentation',
+      deadline: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days from now
+      completed: false,
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: '4',
+      title: 'Critical bug fix',
+      deadline: new Date(Date.now() + 30 * 60 * 1000).toISOString(), // 30 minutes from now
+      completed: false,
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: '5',
+      title: 'Team meeting prep',
+      deadline: new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString(), // 8 hours from now
+      completed: false,
+      createdAt: new Date().toISOString(),
+    },
+  ];
+
+  const handleQuestPress = (quest: Quest) => {
+    Alert.alert(
+      'Quest Details',
+      `Title: ${quest.title}\nDeadline: ${quest.deadline}`
+    );
+  };
+
   return (
     <View style={styles.container}>
       {/* Top Section - New Task Button and Controls */}
@@ -26,22 +75,16 @@ export default function TodosScreen() {
         </View>
       </View>
 
-      {/* Main Content Area - Task Cards */}
+      {/* Main Content Area - Quest Cards */}
       <View style={styles.mainContent}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {/* Placeholder Task Cards */}
-          <View style={styles.taskCard}>
-            <Text style={styles.taskTitle}>Complete project proposal</Text>
-            <Text style={styles.taskDeadline}>Due: 2 hours</Text>
-          </View>
-          <View style={styles.taskCard}>
-            <Text style={styles.taskTitle}>Review code changes</Text>
-            <Text style={styles.taskDeadline}>Due: 1 day</Text>
-          </View>
-          <View style={styles.taskCard}>
-            <Text style={styles.taskTitle}>Update documentation</Text>
-            <Text style={styles.taskDeadline}>Due: 3 days</Text>
-          </View>
+          {sampleQuests.map(quest => (
+            <QuestCard
+              key={quest.id}
+              quest={quest}
+              onPress={handleQuestPress}
+            />
+          ))}
         </ScrollView>
       </View>
     </View>
@@ -70,18 +113,6 @@ const styles = StyleSheet.create({
   },
   mainContent: {
     flex: 1,
-  },
-  taskCard: {
-    ...theme.styles.card,
-    marginBottom: theme.spacing.md,
-  },
-  taskTitle: {
-    ...theme.styles.text.body,
-    marginBottom: theme.spacing.xs,
-  },
-  taskDeadline: {
-    ...theme.styles.text.caption,
-    color: theme.colors.warning,
   },
   controlsSection: {
     flexDirection: 'row',

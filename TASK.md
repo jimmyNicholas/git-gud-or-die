@@ -13,35 +13,36 @@ Implement the core todo management functionality with local state management, in
 - [x] Create questService with AsyncStorage implementation
 - [x] Create useQuests hook for state management
 - [x] Create characterService and useCharacter hook
-- [ ] Add date/time utilities for deadline handling
+- [x] Add date/time utilities for deadline handling
 
-### 2. Implement Todo CRUD Operations
+### 2. Create UI Components
 
-- [ ] Create "Add Todo" functionality with deadline picker
-- [ ] Implement todo list display with countdown timers
-- [ ] Add todo editing capabilities
-- [ ] Implement todo deletion with confirmation
+- [x] Design quest card component with countdown display
+- [ ] Create add/edit quest modal/form
+- [ ] Implement quest list with proper styling
+- [ ] Add confirmation dialogs for destructive actions
+- [ ] Design character status display component
 
-### 3. Add Countdown Timer Logic
+### 3. Implement Quest CRUD Operations
+
+- [ ] Create "Add Quest" functionality with deadline picker
+- [ ] Implement quest list display with countdown timers
+- [ ] Add quest editing capabilities
+- [ ] Implement quest deletion with confirmation
+
+### 4. Add Countdown Timer Logic
 
 - [ ] Create countdown timer component
 - [ ] Implement real-time countdown updates
 - [ ] Add visual warnings as deadlines approach
 - [ ] Handle deadline expiration logic
 
-### 4. Implement Permadeath System
+### 5. Implement Permadeath System
 
 - [ ] Create character death detection logic
-- [ ] Implement todo deletion on character death
+- [ ] Implement quest deletion on character death
 - [ ] Add character resurrection/creation flow
 - [ ] Set up death statistics tracking
-
-### 5. Create UI Components
-
-- [ ] Design todo item component with countdown
-- [ ] Create add/edit todo modal/form
-- [ ] Implement character status display
-- [ ] Add confirmation dialogs for destructive actions
 
 ## Success Criteria
 
@@ -66,3 +67,7 @@ Implement the core todo management functionality with local state management, in
 - Fixed AsyncStorage version compatibility (2.1.2)
 - Resolved ESLint issues in todo service and storage utilities
 - Added avatar system for future pixel art character customization
+- Added comprehensive date/time utilities for deadline handling
+- Created reusable QuestCard component with proper TypeScript types
+- Implemented color-coded health bar system (Green → Yellow → Orange → Red)
+- Consolidated types into centralized types folder for better maintainability
