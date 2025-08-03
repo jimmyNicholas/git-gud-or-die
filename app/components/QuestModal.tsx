@@ -72,8 +72,57 @@ export const QuestModal: React.FC<QuestModalProps> = ({
       deadline: selectedDate.toISOString(),
     };
 
-    onSave(questData);
-    onClose();
+    // Format deadline for confirmation dialog
+    const formatDeadlineForConfirmation = (date: Date): string => {
+      const now = new Date();
+      const diffMs = date.getTime() - now.getTime();
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const diffHours = Math.floor(
+        (diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+      let timeString = '';
+      if (diffDays > 0) {
+        timeString += `${diffDays}d `;
+      }
+      if (diffHours > 0) {
+        timeString += `${diffHours}h `;
+      }
+      if (diffMinutes > 0) {
+        timeString += `${diffMinutes}m`;
+      }
+
+      return `${formatDateTime(date)} (${timeString.trim()} from now)`;
+    };
+
+    // Show confirmation dialog for quest creation/editing
+    const isCreating = !isEditing;
+    const dialogTitle = isCreating
+      ? 'Confirm Quest Creation'
+      : 'Confirm Quest Update';
+    const dialogMessage = isCreating
+      ? `Are you sure you want to create this quest?\n\n` +
+        `Title: ${questData.title}\n` +
+        `Deadline: ${formatDeadlineForConfirmation(selectedDate)}\n\n` +
+        `⚠️ WARNING: Missing this deadline will result in character death and quest deletion!`
+      : `Are you sure you want to update this quest?\n\n` +
+        `Title: ${questData.title}\n` +
+        `Deadline: ${formatDeadlineForConfirmation(selectedDate)}\n\n` +
+        `⚠️ WARNING: Missing this deadline will result in character death and quest deletion!`;
+    const confirmText = isCreating ? 'Create Quest' : 'Update Quest';
+
+    Alert.alert(dialogTitle, dialogMessage, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: confirmText,
+        style: 'destructive',
+        onPress: () => {
+          onSave(questData);
+          onClose();
+        },
+      },
+    ]);
   };
 
   const handleDateChange = (event: unknown, date?: Date) => {

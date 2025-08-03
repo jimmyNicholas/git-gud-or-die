@@ -18,6 +18,7 @@ interface QuestCardProps {
     questId: string,
     updates: { title?: string; description?: string }
   ) => void;
+  onDelete?: (questId: string) => void;
   onExpand?: (questId: string) => void;
   onCancel?: () => void;
   isExpanded: boolean;
@@ -26,6 +27,7 @@ interface QuestCardProps {
 export const QuestCard: React.FC<QuestCardProps> = ({
   quest,
   onUpdate,
+  onDelete,
   onExpand,
   onCancel,
   isExpanded,
@@ -179,12 +181,22 @@ export const QuestCard: React.FC<QuestCardProps> = ({
                 </TouchableOpacity>
               </>
             ) : (
-              <TouchableOpacity
-                style={styles.actionButton}
-                onPress={handleEditPress}
-              >
-                <Text style={styles.actionButtonText}>Edit</Text>
-              </TouchableOpacity>
+              <>
+                <TouchableOpacity
+                  style={styles.actionButton}
+                  onPress={handleEditPress}
+                >
+                  <Text style={styles.actionButtonText}>Edit</Text>
+                </TouchableOpacity>
+                {onDelete && (
+                  <TouchableOpacity
+                    style={styles.deleteButton}
+                    onPress={() => onDelete(quest.id)}
+                  >
+                    <Text style={styles.deleteButtonText}>Delete</Text>
+                  </TouchableOpacity>
+                )}
+              </>
             )}
           </View>
         </View>
@@ -302,5 +314,17 @@ const styles = StyleSheet.create({
     ...theme.styles.text.body,
     color: theme.colors.text,
     fontWeight: theme.typography.fontWeight.semibold,
+  },
+  deleteButton: {
+    flex: 1,
+    backgroundColor: theme.colors.error,
+    borderRadius: theme.borderRadius.sm,
+    padding: theme.spacing.sm,
+    alignItems: 'center',
+  },
+  deleteButtonText: {
+    ...theme.styles.text.body,
+    color: theme.colors.text,
+    fontWeight: theme.typography.fontWeight.medium,
   },
 });

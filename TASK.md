@@ -20,8 +20,9 @@ Implement the core todo management functionality with local state management, in
 - [x] Design quest card component with countdown display
 - [x] Create add/edit quest modal/form
 - [x] Implement quest list with proper styling
-- [ ] Add confirmation dialogs for destructive actions
-- [ ] Design character status display component
+- [x] Add confirmation dialogs for destructive actions
+- [x] Add confirmation dialogs for quest creation actions (reminding users of the consequences of failure and ensuring details are correct)
+- [x] Design character status display component
 
 ### 3. Implement Quest CRUD Operations
 
@@ -76,3 +77,8 @@ Implement the core todo management functionality with local state management, in
 - Replaced manual deadline input with proper date-time picker
 - Added comprehensive quick adjustment buttons (5m, 1h, 1d, 1w)
 - Implemented card collapse behavior (auto-collapse after edit, only one card expanded at a time)
+- Created reusable ConfirmationDialog component for destructive actions
+- Created CharacterStatus component with permadeath warnings and character stats
+- Added delete functionality to QuestCard with confirmation dialog support
+- Added confirmation dialogs for quest creation/editing with permadeath warnings
+- Enhanced deadline display in confirmations with relative time (e.g., "2d 5h 30m from now")
