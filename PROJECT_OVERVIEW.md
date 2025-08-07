@@ -155,7 +155,7 @@ A gamified todo app where missing deadlines kills your character and all current
 
 - [x] Initialize Expo project with TypeScript
 - [x] Set up basic navigation and screens
-- [ ] Implement core todo CRUD with local state
+- [x] Implement core todo CRUD with local state
 - [ ] Add countdown timers and permadeath logic
 - [ ] Basic character system (create/reset character)
 - [x] Test on Android simulator/device
