@@ -25,11 +25,13 @@ Implement the core todo management functionality with local state management, in
 - [x] Design character status display component
 
 ### 3. Implement Quest CRUD Operations
-
-- [ ] Create "Add Quest" functionality with deadline picker
-- [ ] Implement quest list display with countdown timers
-- [ ] Add quest editing capabilities
-- [ ] Implement quest deletion with confirmation
+- [ ] Implement quest creation logic in `useQuests.ts`
+      - [x] Add `addQuest` function to local state and persist to AsyncStorage
+      - [x] Validate deadline and required fields before saving
+      - [x] Integrate with QuestModal form in `QuestModal.tsx`
+- [x] Implement quest reading logic in `useQuests.ts`
+- [x] Implement quest updating logic in `useQuests.ts`
+- [x] Implement quest deletion logic in `useQuests.ts`
 
 ### 4. Add Countdown Timer Logic
 

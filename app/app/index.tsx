@@ -10,6 +10,8 @@ import {
 import { theme } from '../theme';
 import { QuestCard, QuestModal } from '../components';
 import { type Quest, type CreateQuestInput } from '../types';
+import { useQuests } from '../hooks/useQuests';
+import { tryCatch } from '../utils/tryCatch';
 
 export default function TodosScreen() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -18,65 +20,37 @@ export default function TodosScreen() {
   );
   const [expandedQuestId, setExpandedQuestId] = useState<string | null>(null);
 
-  // Sample quest data for testing
-  const sampleQuests: Quest[] = [
-    {
-      id: '1',
-      title: 'Complete project proposal',
-      deadline: new Date(Date.now() + 17 * 60 * 60 * 1000).toISOString(), // 17 hours from now
-      completed: false,
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '2',
-      title: 'Review code changes',
-      deadline: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 1 day from now
-      completed: false,
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '3',
-      title: 'Update documentation',
-      deadline: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days from now
-      completed: false,
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '4',
-      title: 'Critical bug fix',
-      deadline: new Date(Date.now() + 30 * 60 * 1000).toISOString(), // 30 minutes from now
-      completed: false,
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: '5',
-      title: 'Team meeting prep',
-      deadline: new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString(), // 8 hours from now
-      completed: false,
-      createdAt: new Date().toISOString(),
-    },
-  ];
+  const { quests, loading, error, addQuest, updateQuest, deleteQuest } =
+    useQuests();
 
   const handleNewQuest = () => {
     setEditingQuest(undefined);
     setModalVisible(true);
   };
 
-  const handleSaveQuest = (_questData: CreateQuestInput) => {
+  const handleSaveQuest = async (_questData: CreateQuestInput) => {
+    const { title, description, deadline } = _questData;
     if (editingQuest) {
-      // TODO: Update existing quest
-      Alert.alert('Success', 'Quest updated! (Not implemented yet)');
+      const { error } = await tryCatch(
+        updateQuest(editingQuest.id, { title, description })
+      );
+      error ? Alert.alert('Error updating quest:', error.message) : "Unable to update quest";
     } else {
-      // TODO: Create new quest
-      Alert.alert('Success', 'Quest created! (Not implemented yet)');
+      const { error } = await tryCatch(
+        addQuest({ title, description, deadline })
+      );
+      error ? Alert.alert('Error adding quest:', error.message) : "Unable to add quest";
     }
   };
 
-  const handleUpdateQuest = (
+  const handleUpdateQuest = async (
     _questId: string,
     _updates: { title?: string; description?: string }
   ) => {
-    Alert.alert('Success', 'Quest updated! (Not implemented yet)');
+    const { error } = await tryCatch(
+      updateQuest(_questId, _updates)
+    );
+    error ? Alert.alert('Error updating quest:', error.message) : "Unable to update quest";
     setExpandedQuestId(null); // Collapse card after update
   };
 
@@ -93,6 +67,20 @@ export default function TodosScreen() {
     setEditingQuest(undefined);
   };
 
+  if (loading) {
+    return <Text>Loading...</Text>;
+  }
+  if (error) {
+    return <Text>Error: {error}</Text>;
+  }
+
+  const handleDeleteQuest = async (questId: string) => {
+    const { error } = await tryCatch(deleteQuest(questId));
+    if (error) {
+      Alert.alert('Error deleting quest:', error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       {/* Top Section - New Task Button and Controls */}
@@ -107,13 +95,30 @@ export default function TodosScreen() {
           <TouchableOpacity style={styles.controlButton}>
             <Text style={styles.controlButtonText}>Filter</Text>
           </TouchableOpacity>
+          {/* debug button for deleting a quest */}
+          <TouchableOpacity
+            style={styles.controlButton}
+            onPress={() => handleDeleteQuest(quests[0].id)}
+          >
+            <Text style={styles.controlButtonText}>x</Text>
+          </TouchableOpacity>
         </View>
       </View>
+
+      {quests.length === 0 && (
+        <TouchableOpacity
+          style={styles.noQuestsContainer}
+          onPress={handleNewQuest}
+        >
+          <Text style={styles.noQuestsText}>No quests yet...</Text>
+          <Text style={styles.noQuestsText}>🏕️</Text>
+        </TouchableOpacity>
+      )}
 
       {/* Main Content Area - Quest Cards */}
       <View style={styles.mainContent}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {sampleQuests.map(quest => (
+          {quests.map(quest => (
             <QuestCard
               key={quest.id}
               quest={quest}
@@ -159,6 +164,22 @@ const styles = StyleSheet.create({
   },
   mainContent: {
     flex: 1,
+  },
+  noQuestsContainer: {
+    height: '30%',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: theme.colors.text,
+    padding: theme.spacing.lg,
+    borderRadius: theme.spacing.sm,
+  },
+  noQuestsText: {
+    color: theme.colors.text,
+    fontSize: theme.typography.fontSize['2xl'],
+    fontWeight: theme.typography.fontWeight.semibold,
+    textAlign: 'center',
   },
   controlsSection: {
     flexDirection: 'row',
