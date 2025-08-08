@@ -35,10 +35,11 @@ Implement the core todo management functionality with local state management, in
 
 ### 4. Add Countdown Timer Logic
 
-- [ ] Create countdown timer component
-- [ ] Implement real-time countdown updates
-- [ ] Add visual warnings as deadlines approach
-- [ ] Handle deadline expiration logic
+- [x] Create hook for time management
+- [x] Extract countdown timer and health bar components
+- [x] Implement real-time countdown updates
+- [x] Add visual warnings as deadlines approach
+- [ ] Handle deadline expiration and quest completion logic
 
 ### 5. Implement Permadeath System
 
